@@ -1,5 +1,5 @@
 name: CoinFlipPlugin
 version: 1.0.0
 api: 4.21.0
-main: com\LeoWasCoding\Coinflip
+main: com\LeoWasCoding\Coinflip\CoinFlipPlugin.php
 depend: [BedrockEconomy]
