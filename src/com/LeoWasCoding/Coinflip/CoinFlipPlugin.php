@@ -1,14 +1,18 @@
 <?php
-namespace com\leowascoding\Coinflip;
+namespace com\example\coinflipplugin;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat;
-use onebone\bedrockeconomy\BedrockEconomyAPI;
+use cooldogepm\bedrockeconomy\BedrockEconomyAPI;
+use pocketmine\utils\Config;
 
 class CoinFlipPlugin extends PluginBase implements Listener {
     /** @var BedrockEconomyAPI */
     private $economy;
+    /** @var Config */
+    private $config;
 
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -18,6 +22,11 @@ class CoinFlipPlugin extends PluginBase implements Listener {
             $this->getServer()->getPluginManager()->disablePlugin($this);
             return;
         }
+        
+        // this is the configuration file!
+        $this->saveDefaultConfig();
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        
         $this->getLogger()->info("CoinFlipPlugin enabled!");
     }
 
@@ -33,7 +42,7 @@ class CoinFlipPlugin extends PluginBase implements Listener {
 
     private function flipCoin($player) {
         $result = (bool)random_int(0, 1);
-        $amount = 100; // Amount to bet, adjust as needed
+        $amount = $this->config->get("bet_amount", 100);
 
         if ($this->economy->reduceMoney($player, $amount)) {
             $message = $result ? "You won!" : "You lost!";
