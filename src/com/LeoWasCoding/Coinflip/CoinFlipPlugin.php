@@ -1,5 +1,5 @@
 <?php
-namespace LeoWasCoding\Coinflip;
+namespace com\LeoWasCoding\Coinflip;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
