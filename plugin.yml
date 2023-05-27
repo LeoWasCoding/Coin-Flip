@@ -2,5 +2,5 @@ name: CoinFlipPlugin
 author: ExterLeo
 version: 1.0.0
 api: 4.21.0
-main: srv\com\LeoWasCoding\Coinflip\CoinFlipPlugin
+main: src\LeoWasCoding\Coinflip\CoinFlipPlugin
 depend: [BedrockEconomy]
