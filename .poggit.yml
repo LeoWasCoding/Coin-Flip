@@ -4,5 +4,5 @@ branches:
 - main
 projects:
   Coin-Flip:
-    path: ""
+    path: "src\leo\coinflip\coinflip"
 ...
